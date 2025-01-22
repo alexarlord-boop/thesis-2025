@@ -1,6 +1,10 @@
 # Stage 1: Base setup with Debian, Apache, MySQL, and PHP
 FROM debian:bookworm-slim as base
 
+# Set environment variables
+ARG PHP_VERSION=8.2
+ARG SSP_VERSION=2.2.1
+
 # Install Apache, MySQL, PHP, and other dependencies
 RUN apt-get update && apt-get install -y \
     apache2 \
@@ -16,10 +20,10 @@ RUN apt-get update && apt-get install -y \
 FROM base as simplesamlphp
 
 # Download and install SimpleSAMLphp
-RUN wget https://github.com/simplesamlphp/simplesamlphp/releases/download/v1.19.0/simplesamlphp-1.19.0.tar.gz \
-    && tar xzf simplesamlphp-1.19.0.tar.gz -C /var \
-    && mv /var/simplesamlphp-1.19.0 /var/simplesamlphp \
-    && rm simplesamlphp-1.19.0.tar.gz
+RUN wget https://github.com/simplesamlphp/simplesamlphp/releases/download/v${SSP_VERSION}/simplesamlphp-${SSP_VERSION}-full.tar.gz \
+    && tar xzf simplesamlphp-${SSP_VERSION}-full.tar.gz -C /var \
+    && mv /var/simplesamlphp-${SSP_VERSION} /var/simplesamlphp \
+    && rm simplesamlphp-${SSP_VERSION}-full.tar.gz
 
 # Copy configuration files
 COPY config/ /var/simplesamlphp/config/

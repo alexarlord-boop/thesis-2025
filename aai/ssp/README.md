@@ -24,6 +24,5 @@ ssp-aai
 
 ```openssl req -newkey rsa:3072 -new -x509 -days 3652 -nodes -out example.org.crt -keyout example.org.pem``` -- certs will be valid for 10 years
 
-```openssl req -newkey rsa:3072 -new -x509 -days 3652 -nodes -out localhost.crt -keyout localhost.pem -subj "/CN=localhost"
-```
+```openssl req -newkey rsa:3072 -new -x509 -days 3652 -nodes -out localhost.crt -keyout localhost.pem -subj "/CN=localhost"```
 
