@@ -1,5 +1,5 @@
-
 # SSP AAI stack deployment
+This is a simple deployment of a SAML IDP-SP (proxy). The deployment is done using docker, all necessary configurations are included in the repository under ```ssp``` folder.
 
 ```sh
 cd aai/ssp
@@ -8,11 +8,12 @@ cd aai/ssp
 ```sh
 docker build -t ssp-aai .
 ```
+
 ```sh
 docker run -d -p 8080:80 \
--v /Users/rert0/Desktop/ti-wizard/aai/ssp/config/:/var/simplesamlphp/config \
--v /Users/rert0/Desktop/ti-wizard/aai/ssp/metadata/:/var/simplesamlphp/metadata \
--v /Users/rert0/Desktop/ti-wizard/aai/ssp/certs/:/var/simplesamlphp/cert \
+-v ./config/:/var/simplesamlphp/config \
+-v ./metadata/:/var/simplesamlphp/metadata \
+-v ./certs/:/var/simplesamlphp/cert \
 ssp-aai
 ```
 
