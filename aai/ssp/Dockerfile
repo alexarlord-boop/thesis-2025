@@ -29,6 +29,11 @@ RUN wget https://github.com/simplesamlphp/simplesamlphp/releases/download/v${SSP
 COPY config/ /var/simplesamlphp/config/
 COPY metadata/ /var/simplesamlphp/metadata/
 COPY certs/ /var/simplesamlphp/cert/
+COPY ssp.conf /etc/apache2/sites-available/ssp.conf
+
+# Enable Apache site
+RUN a2ensite ssp.conf
+
 
 # Expose port 80
 EXPOSE 80
