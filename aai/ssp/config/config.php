@@ -3,6 +3,7 @@ $config = [
     'baseurlpath' => 'simplesaml/',
     'certdir' => 'cert/',
     'loggingdir' => 'log/',
+    'logging.handler' => 'file',
     'datadir' => 'data/',
     'tempdir' => 'temp/',
     'technicalcontact_name' => 'Administrator',

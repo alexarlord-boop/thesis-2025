@@ -21,8 +21,7 @@ ssp-aai
 
 ## Hosted SAML IDP side
 ### Certificates (RSA only)
-
-```openssl req -newkey rsa:3072 -new -x509 -days 3652 -nodes -out example.org.crt -keyout example.org.pem``` -- certs will be valid for 10 years
+The IdP needs a certificate to sign its SAML assertions with.
 
 ```openssl req -newkey rsa:3072 -new -x509 -days 3652 -nodes -out localhost.crt -keyout localhost.pem -subj "/CN=localhost"```
 
