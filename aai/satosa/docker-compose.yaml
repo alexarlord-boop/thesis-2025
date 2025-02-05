@@ -1,0 +1,35 @@
+# services:
+#   satosa:
+#     build: .
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - ./config:/satosa/config
+#       - ./plugins:/satosa/plugins
+#     environment:
+#       - PYTHONUNBUFFERED=1
+
+
+# services:
+#   satosa:
+#     build: .
+#     ports:
+#       - "8000:8000"
+#     volumes:
+#       - ./config:/satosa/config
+#       - ./plugins:/satosa/plugins
+#     environment:
+#       - PYTHONUNBUFFERED=1
+
+
+services:
+  satosa:
+    build: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./config:/satosa/config
+      - ./plugins:/satosa/plugins
+    environment:
+      - PYTHONUNBUFFERED=1
+    command: ["gunicorn", "-b", "0.0.0.0:8000", "satosa.wsgi:app", "--config", "/satosa/config/proxy_conf.yaml"]
