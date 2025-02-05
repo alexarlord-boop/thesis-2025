@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
     php-curl \
     wget \
     unzip \
+    nano \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -37,6 +38,10 @@ COPY config/ /var/simplesamlphp/config/
 COPY metadata/ /var/simplesamlphp/metadata/
 COPY certs/ /var/simplesamlphp/cert/
 COPY ssp.conf /etc/apache2/sites-available/ssp.conf
+COPY modules/ /var/simplesamlphp/modules/
+
+WORKDIR /var/simplesamlphp/cert
+RUN chown www-data:www-data localhost.pem 
 
 # Enable Apache site
 RUN a2ensite ssp.conf

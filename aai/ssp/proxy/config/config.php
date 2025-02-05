@@ -12,6 +12,8 @@ $config = [
     'secretsalt' => 'random-secret-salt',
     'auth.adminpassword' => 'admin',
     'enable.saml20-idp' => true,
+    'language.i18n.backend' => 'gettext/gettext',
+    'usenewui' => true,
     'module.enable' => array(
         'exampleauth' => true,
         'saml' => true,
@@ -20,5 +22,8 @@ $config = [
         'cron' => true,
         'metarefresh' => true,
         'oidc' => true,
+        'mymodule' => true,
     ),
+   
+    'theme.use' => 'mymodule:fancytheme',
 ];

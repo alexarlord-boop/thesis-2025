@@ -23,5 +23,8 @@ ssp-aai
 ### Certificates (RSA only)
 The IdP needs a certificate to sign its SAML assertions with.
 
-```openssl req -newkey rsa:3072 -new -x509 -days 3652 -nodes -out localhost.crt -keyout localhost.pem -subj "/CN=localhost"```
+```bash
+openssl req -newkey rsa:3072 -new -x509 -days 3652 -nodes -out localhost.crt -keyout localhost.pem -subj "/CN=localhost"
+
+```
 

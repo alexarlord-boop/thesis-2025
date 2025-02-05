@@ -1,6 +1,6 @@
 <?php
 
-$metadata['http://localhost/saml-idp'] = [
+$metadata['http://localhost/proxy-idp'] = [
     /*
      * The hostname for this IdP. This makes it possible to run multiple
      * IdPs from the same configuration. '__DEFAULT__' means that this one

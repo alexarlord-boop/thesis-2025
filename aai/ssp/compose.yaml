@@ -1,0 +1,29 @@
+
+services:
+  ssp-proxy:
+    build: 
+      context: ./proxy
+    ports:
+      - "8081:80"
+    volumes:
+      - ./proxy/metadata:/var/simplesamlphp/metadata
+    networks:
+      saml-net:
+        aliases:
+          - proxy.example.com
+
+  ssp-sp:
+    build: 
+      context: ./sp
+    ports:
+      - "8082:80"
+    volumes:
+      - ./sp/metadata:/var/simplesamlphp/metadata
+    networks:
+      saml-net:
+        aliases:
+          - sp.example.com
+
+networks:
+  saml-net:
+    driver: bridge
