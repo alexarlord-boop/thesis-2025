@@ -23,6 +23,17 @@ services:
       saml-net:
         aliases:
           - sp.example.com
+  ssp-idp:
+    build: 
+      context: ./idp
+    ports:
+      - "8083:80"
+    volumes:
+      - ./idp/metadata:/var/simplesamlphp/metadata
+    networks:
+      saml-net:
+        aliases:
+          - idp.example.com
 
 networks:
   saml-net:

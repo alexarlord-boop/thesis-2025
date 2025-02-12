@@ -1,7 +1,7 @@
 <?php
-// IDP side of the Proxy
-$metadata['http://localhost/proxy-idp'] = [
-    'entityid' => 'http://localhost/proxy-idp',
+// Custom remote IDP (managed from gui/metarefresh)
+$metadata['http://localhost/custom-idp'] = [
+    'entityid' => 'http://localhost/custom-idp',
     'contacts' => [
         [
             'contactType' => 'technical',
@@ -15,13 +15,13 @@ $metadata['http://localhost/proxy-idp'] = [
     'SingleSignOnService' => [
         [
             'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
-            'Location' => 'http://localhost:8081/simplesaml/module.php/saml/idp/singleSignOnService',
+            'Location' => 'http://localhost:8083/simplesaml/module.php/saml/idp/singleSignOnService',
         ],
     ],
     'SingleLogoutService' => [
         [
             'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
-            'Location' => 'http://localhost:8081/simplesaml/module.php/saml/idp/singleLogout',
+            'Location' => 'http://localhost:8083/simplesaml/module.php/saml/idp/singleLogout',
         ],
     ],
     'ArtifactResolutionService' => [],

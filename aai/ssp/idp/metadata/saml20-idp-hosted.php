@@ -1,6 +1,6 @@
 <?php
-// Local IDP side of the Proxy
-$metadata['http://localhost/proxy-idp'] = [
+
+$metadata['http://localhost/custom-idp'] = [
     /*
      * The hostname for this IdP. This makes it possible to run multiple
      * IdPs from the same configuration. '__DEFAULT__' means that this one
@@ -20,5 +20,5 @@ $metadata['http://localhost/proxy-idp'] = [
      * The authentication source which should be used to authenticate the
      * user. This must match one of the entries in config/authsources.php.
      */
-    'auth' => 'proxy-sp',
+    'auth' => 'example-userpass',
 ];

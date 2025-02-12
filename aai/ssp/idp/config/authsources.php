@@ -8,16 +8,16 @@ $config = [
         'core:AdminPassword',
     ),
     
-    'custom-sp' => [
-        'saml:SP',
-        'entityID' => 'http://localhost/custom-sp',
+    // 'default-sp' => [
+    //     'saml:SP',
+    //     'entityID' => 'http://localhost/saml-sp',
 
-        /*
-         * The entity ID of the IdP this should SP should contact.
-         * Can be NULL/unset, in which case the user will be shown a list of available IdPs.
-         */
-        'idp' => 'http://localhost/proxy-idp',
-    ],
+    //     /*
+    //      * The entity ID of the IdP this should SP should contact.
+    //      * Can be NULL/unset, in which case the user will be shown a list of available IdPs.
+    //      */
+    //     'idp' => null,
+    // ],
 
     'example-userpass' => [
         'exampleauth:UserPass',

@@ -1,7 +1,7 @@
 <?php
-// Custom remote SP (managed from gui/metarefresh)
-$metadata['http://localhost/custom-sp'] = [
-    'entityid' => 'http://localhost/custom-sp',
+// SP side of the Proxy
+$metadata['http://localhost/proxy-sp'] = [
+    'entityid' => 'http://localhost/proxy-sp',
     'contacts' => [
         [
             'contactType' => 'technical',
@@ -15,19 +15,19 @@ $metadata['http://localhost/custom-sp'] = [
     'AssertionConsumerService' => [
         [
             'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST',
-            'Location' => 'http://localhost:8082/simplesaml/module.php/saml/sp/saml2-acs.php/custom-sp',
+            'Location' => 'http://localhost:8081/simplesaml/module.php/saml/sp/saml2-acs.php/proxy-sp',
             'index' => 0,
         ],
         [
             'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Artifact',
-            'Location' => 'http://localhost:8082/simplesaml/module.php/saml/sp/saml2-acs.php/custom-sp',
+            'Location' => 'http://localhost:8081/simplesaml/module.php/saml/sp/saml2-acs.php/proxy-sp',
             'index' => 1,
         ],
     ],
     'SingleLogoutService' => [
         [
             'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
-            'Location' => 'http://localhost:8082/simplesaml/module.php/saml/sp/saml2-logout.php/custom-sp',
+            'Location' => 'http://localhost:8081/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp',
         ],
     ],
 ];

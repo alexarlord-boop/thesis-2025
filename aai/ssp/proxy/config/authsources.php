@@ -8,7 +8,7 @@ $config = [
         'core:AdminPassword',
     ),
     
-    'default-sp' => [
+    'proxy-sp' => [
         'saml:SP',
         'entityID' => 'http://localhost/proxy-sp',
 
