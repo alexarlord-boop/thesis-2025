@@ -8,16 +8,6 @@ $config = [
         'core:AdminPassword',
     ),
     
-    // 'default-sp' => [
-    //     'saml:SP',
-    //     'entityID' => 'http://localhost/saml-sp',
-
-    //     /*
-    //      * The entity ID of the IdP this should SP should contact.
-    //      * Can be NULL/unset, in which case the user will be shown a list of available IdPs.
-    //      */
-    //     'idp' => null,
-    // ],
 
     'example-userpass' => [
         'exampleauth:UserPass',

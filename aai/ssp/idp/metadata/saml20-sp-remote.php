@@ -27,7 +27,7 @@ $metadata['http://localhost/proxy-sp'] = [
     'SingleLogoutService' => [
         [
             'Binding' => 'urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect',
-            'Location' => 'http://localhost:8081/simplesaml/module.php/saml/sp/saml2-logout.php/default-sp',
+            'Location' => 'http://localhost:8081/simplesaml/module.php/saml/sp/saml2-logout.php/proxy-sp',
         ],
     ],
 ];
