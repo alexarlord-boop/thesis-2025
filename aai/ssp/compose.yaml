@@ -6,6 +6,7 @@ services:
     ports:
       - "8081:80"
     volumes:
+      - ./proxy/config:/var/simplesamlphp/config
       - ./proxy/metadata:/var/simplesamlphp/metadata
       - ./proxy/modules/mymodule:/var/simplesamlphp/modules/mymodule
     networks:
@@ -19,7 +20,9 @@ services:
     ports:
       - "8082:80"
     volumes:
+      - ./sp/config:/var/simplesamlphp/config
       - ./sp/metadata:/var/simplesamlphp/metadata
+      - ./sp/modules/mymodule:/var/simplesamlphp/modules/mymodule
     networks:
       saml-net:
         aliases:
@@ -30,7 +33,9 @@ services:
     ports:
       - "8083:80"
     volumes:
+      - ./idp/config:/var/simplesamlphp/config
       - ./idp/metadata:/var/simplesamlphp/metadata
+      - ./idp/modules/mymodule:/var/simplesamlphp/modules/mymodule
     networks:
       saml-net:
         aliases:

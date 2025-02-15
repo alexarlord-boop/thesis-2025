@@ -21,4 +21,9 @@ $metadata['http://localhost/proxy-idp'] = [
      * user. This must match one of the entries in config/authsources.php.
      */
     'auth' => 'proxy-sp',
+    'attributes.NameFormat' => 'urn:oasis:names:tc:SAML:2.0:attrname-format:uri',
+    'authproc' => array(
+        // Convert LDAP names to oids.
+        100 => array('class' => 'core:AttributeMap', 'name2oid'),
+    ),
 ];

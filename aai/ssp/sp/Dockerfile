@@ -40,6 +40,12 @@ COPY certs/ /var/simplesamlphp/cert/
 COPY ssp.conf /etc/apache2/sites-available/ssp.conf
 COPY modules/ /var/simplesamlphp/modules/
 
+# Copy service html files
+COPY ./html/ /var/simplesamlphp/public/
+RUN chown -R www-data:www-data /var/simplesamlphp/public
+RUN chmod -R 755 /var/simplesamlphp/public
+
+
 WORKDIR /var/simplesamlphp/cert
 RUN chown www-data:www-data localhost.pem 
 
