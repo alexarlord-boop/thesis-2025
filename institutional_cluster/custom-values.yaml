@@ -1,0 +1,34 @@
+replicaCount: 1
+
+image:
+  repository: nginx
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: true
+  className: nginx
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  hosts:
+    - host: nup.ac.cy
+      paths:
+        - path: /svc1
+          pathType: Prefix
+          backend:
+            service:
+              name: nginx-service-1
+              port:
+                number: 80
+        - path: /svc2
+          pathType: Prefix
+          backend:
+            service:
+              name: nginx-service-2
+              port:
+                number: 80
+  tls: []
