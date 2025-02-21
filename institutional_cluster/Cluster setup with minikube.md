@@ -27,39 +27,66 @@ kubectl apply -f ingress.yaml
 minikube tunnel
 ```
 
-# Enable SSL/TLS with a Self-Signed Certificate
-
-> Install cert-manager
+# Creating helm chart
 
 ```bash
-
-kubectl apply -f https://github.com/jetstack/cert-manager/releases/latest/download/cert-manager.yaml
-kubectl get pods -n cert-manager
+helm create institutional-chart
 ```
 
-<!-- > Create a self-signed TLS cert with [ClusterIssuer](issuer.yaml) -->
+# Package helm chart
 
-> Configuring SSL for Kubernetes Ingress Controller
-1. certs
 ```bash
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -subj "/CN=ingress.minikube.local"
-```
-1. use them in tls secret 
-```bash
-kubectl create secret tls ingress-tls  --key=tls.key --cert=tls.crt -n ingress-nginx
-```
-1. Configure Ingress Controller to Use TLS
-```bash
-kubectl patch deployment ingress-nginx-controller -n ingress-nginx --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value":"--default-ssl-certificate=ingress-nginx/ingress-tls"}]'
+helm package institutional-chart
 ```
 
-Edit hosts file
+# Install/uninstall helm chart
+
 ```bash
-echo "$(minikube ip) ingress.minikube.local" | sudo tee -a /etc/hosts
+helm install institutional institutional-chart
+helm uninstall institutional
 ```
 
+Chart.yaml
+Update the Chart.yaml file with the appropriate metadata.
 
-Getting nginx ingress http and https endpoints
-```bash
-minikube service ingress-nginx-controller -n ingress-nginx --url
-```
+
+values.yaml
+Update the values.yaml file with the default values for your deployments and services.
+
+
+deployment.yaml
+Update the deployment.yaml file to create the Nginx deployments.
+
+
+service.yaml
+Update the service.yaml file to create the Nginx services.
+
+
+ingress.yaml
+Update the ingress.yaml file to create the Ingress resource.
+
+
+# Lint the Helm chart
+helm lint /Users/rert0/Desktop/ti-wizard/keycloak_chart
+
+# Install the Helm chart
+helm install keycloak /Users/rert0/Desktop/ti-wizard/keycloak_chart
+
+# Check the status of deployments and pods
+kubectl get deployments
+kubectl get pods
+
+# Check pod logs
+kubectl logs <pod-name>
+
+# Verify services
+kubectl get services
+
+# Verify Ingress
+kubectl get ingress
+
+# Check Ingress Controller logs
+kubectl logs -n kube-system $(kubectl get pods -n kube-system | grep nginx-ingress-controller | awk '{print $1}')
+
+# Uninstall the Helm chart
+helm uninstall keycloak
